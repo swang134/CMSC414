@@ -1,0 +1,57 @@
+Design Document
+
+Overall Protocol:
+1.  ATM will receive user's information.
+2.  ATM will then sanitize and parse the input given by the user.
+3.  If invalid inputs are given (such as invalid commands, repeated commands, illegal 
+    characters for certain inputs), program will exit with error code 255
+4.  The pin-code (card-file) provided, auth file, commands, and any other valid information
+    provided will be put into JSON format.
+5.  The JSON format string will be encrypted with 
+6.  Bank will receive the information sent by ATM and decrypt with its own key.
+7.  Bank first verifies the decrypted auth file provided by the ATM to ensure a valid ATM is
+    attempting communication with the bank.
+8.  Bank performs the requested task and prints to STDOUT the respective message
+9.  Bank sends encrypted message regarding the task performed to ATM
+10. ATM receives message and prints to STDOUT the respective message
+
+
+
+Vulnerabilities we attempted to cover:
+1. Buffer overflow attacks
+   - Usage of strncpy instead of strcpy
+2. Data breach/leak
+   - Encryption of all communication between atm and bank
+   - ATM validation by confirming auth_file
+
+
+
+Vulnerabilities that we think important to cover, but could not securely implement: 
+1. The number of args, the document that the c language can hold maximum of 127 parameters 
+   in one function definition, and 4095 characters in a logical source line. In our function, 
+   we only checked whethehr the characters is larger than 4095, but we didn't check the 
+   arguement number. But I think it should be fine, because in our functions we checked the 
+   vaild opinon for arguement and we check for repeated arguement. There will be max of 6 
+   arguemment (exclude the file) input into the function --> in general it should not 
+   exceed the limit of 127 arguements. 
+2. We didn't check whether the context has exact same format (or data type) with the file 
+   format. For example, if the file is txt file, the the context inside this file should 
+   also be txt. The reason we worry about this is we worry if we passing this file into 
+   the bank from atm and execute it, this may destory our bank and not let this work. 
+   We didn't do this in our project because we actually don't know how to check it 
+   (I searched online and there is not function I found can help with it). 
+3. Another think we didn't do is in our thought we want to check that only certainty of 
+   file extention can be passed in (like only txt, bin file can be passed in). we think 
+   this will lower the danger that if the attacker passing a executable attack file into 
+   our function that can desory our machine or stole/modify information from it. 
+4. Check whether the user input more than 1 file in one opinion into the function --> this 
+   may cause a segmentation fault. 
+5. We were not able to implement defenses against DOS attacks, but recognize that it is a
+   major threat to the system.
+
+
+
+Member Responsibilities:
+Shuyao Wang: Overall construction and planning of the program, testing, encryption & decryption
+Syed Zaidi: atm.c, atm-main.c, atm.h
+Austin Han: bank.h, bank.c, bank-main.c 

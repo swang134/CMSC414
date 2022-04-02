@@ -1,0 +1,3 @@
+14:27:40	 From  Julio Poveda : bank -p <port> -s <auth-file>
+14:32:11	 From  Julio Poveda : lsof -i :3000
+14:33:25	 From  Julio Poveda : sudo kill -9 `sudo lsof -t -i:3000`
