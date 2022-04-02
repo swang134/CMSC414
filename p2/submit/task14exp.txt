@@ -1,0 +1,14 @@
+The countermeasure I choose in task14 is I tried use the answer form task 4 which I will post the comment "doing great!","bob":"you got this!","charlie":"you rock!"}' W1234HERE username = 'alice'; -- " under the Alice's post.
+In my app.py, I will first delete the non alphet character(expect the sepcial character ? ! , . ( )) from the comment, so it will becomes "doing great!bobyou got this!charlieyou rock! WHERE username alice ". To make sure it is security, I also change the query FROM
+
+"query = "UPDATE posts SET comments = '" + updated_comments + "' WHERE post_id = " + str(post_id) + ";"
+app.logger.info(query)
+cursor.execute(query)"
+
+TO
+
+"query = "UPDATE posts SET comments = %s WHERE post_id = " + str(post_id) + ";"
+ app.logger.info(query)
+ cursor.execute(query, (updated_comments,))"
+
+So it will passing parameter as a string into the SQL, not the real value. So it will not running the SQL. When I running it in now share, it works as I expected. 

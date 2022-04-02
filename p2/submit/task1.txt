@@ -1,0 +1,5 @@
+username="kathy"
+password="a' or '1'='1"
+So this will result the query becomes 
+"SELECT * FROM users WHERE username = 'kathy' and password = 'a' or '1'='1';"
+Because '1' = '1' will always be true, therefore the query will always success even you input the wrong password. 

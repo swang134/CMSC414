@@ -1,0 +1,6 @@
+search="%'); -- "
+link="now.share/u/evewilson"
+For this part, we want select all private and public post, means we want to make the quary select all elements, to do that we can end the query before the "and share = 'yes'" part, and give a wild context for search. 
+The query with my code would be look like this: 
+"SELECT * FROM posts WHERE (body LIKE '%%');# + search + "%' OR username LIKE '%" + search + "%') AND share = 'yes';"
+So any post body contains "" will be listed. 

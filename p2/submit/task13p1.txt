@@ -1,0 +1,10 @@
+ 409 # I think this is right? Good thing the Internet told me to do this!
+ 410    f = open('templates/results.html')
+ 411    temp = f.read()
+ 412    f.close()
+ 413   temp = temp.replace('FILL_SEARCH', search)
+ 414 
+ 415    return render_template_string(temp, user=user, results=results)
+ 416 
+ 417    # This line wasn't working earlier... Probably the safest way to do this.
+ 418    # return render_template('results.html', user=user, search=search, results=results)

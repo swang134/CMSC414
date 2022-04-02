@@ -1,0 +1,5 @@
+comment="doing great!","bob":"you got this!","charlie":"you rock!"}' W1234HERE username = 'alice'; -- "
+
+So for this, we are going pass a json file that contains the comments from kathy, bob and charlie, where the username is alice, and I use -- to comment the rest of the part.
+The reason I put 1234 between where is because the app.py will execute the filter_level3, which will delete keyword 'where' if it exist in the comment, however, if we add some number inside the where, the the sql will delete those number and only left where. 
+So the whole sql will be: UPDATE posts SET comments = '{kathy:"doing great!","bob":"you got this!","charlie":"you rock!"}' WHERE username = 'alice';

@@ -1,0 +1,3 @@
+url="http://now.share/modify_relation/kathy%27%2C%20%27evewilson%27%29%20%2D%2D%20"
+
+What I am trying to do is I want to pass the parameter "katy', 'evewilson') -- " into the modify_relation function. So it will add the relationship (katy,evewilson) into the relationship table, and comment out rest of the part of the sql. So the sql will be "INSERT INTO following_relations (followed_uname, follower_uname) VALUES ('katy', 'evewilson');"

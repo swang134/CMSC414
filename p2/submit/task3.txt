@@ -1,0 +1,3 @@
+new_password="h4ck3d' WHERE username = 'charlie'; -- "
+
+So this will only pass the new password and the username, and comment the rest of the SQL. As result, it will update the sql to "UPDATE users SET password = h4ck3d' WHERE username = 'charlie';" Which means it will not check the old password, and will directly change the password to h4ck3d.
