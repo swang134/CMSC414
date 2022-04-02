@@ -1,0 +1,5 @@
+xor eax,0x05040302
+ret
+
+add al,0x05
+ret

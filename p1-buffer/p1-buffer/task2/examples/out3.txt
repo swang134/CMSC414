@@ -1,0 +1,6 @@
+xor eax,0x36343634
+ret
+
+xor al,0x36
+xor al,0x36
+ret
